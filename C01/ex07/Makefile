@@ -1,15 +1,15 @@
-NAME = megaphone
+NAME = sed™ 
 
 FLAGS = -Wall -Wextra -Werror
 
 CC = g++
 
-SRCS = megaphone.cpp
+SRCS = main.cpp\
 
 OBJECT = $(SRCS:.cpp=.o)
 
 $(NAME):
-	@$(CC) $(FLAGS) -c $(SRCS) 
+	@$(CC) $(FLAGS) -c $(SRCS)
 	@$(CC) $(FLAGS) -o $(NAME) $(OBJECT)
 
 all: $(NAME)

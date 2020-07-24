@@ -4,12 +4,14 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = g++
 
-SRCS = megaphone.cpp
+SRCS = Dial.cpp\
+	   bouncer.cpp\
+	   contact.cpp\
 
 OBJECT = $(SRCS:.cpp=.o)
 
 $(NAME):
-	@$(CC) $(FLAGS) -c $(SRCS) 
+	@$(CC) $(FLAGS) -c $(SRCS)
 	@$(CC) $(FLAGS) -o $(NAME) $(OBJECT)
 
 all: $(NAME)
