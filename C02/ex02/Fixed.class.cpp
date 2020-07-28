@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 21:24:16 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/28 09:59:51 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/28 10:57:33 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,43 @@ Fixed::Fixed(const int val)
 {
 	std::cout << "Int constructor called\n";
 	this->fpv = val << fbits;
+	std::cout << " val == " + std::to_string(this->fpv) + '\n';
 }
 
 Fixed::Fixed(const float val)
 {
 	std::cout << "Float constructor called\n";
 	this->fpv = val * (1 << fbits);
+}
+
+bool	&operator>(const Fixed &fix)
+{
+	return (this->fpv > fix->fpv);
+}
+
+bool	&operator<(const Fixed &fix)
+{
+	return (this->fpv < fix->fpv);
+}
+
+bool	&operator>=(const Fixed &fix)
+{
+	return (this->fpv >= fix->fpv);
+}
+
+bool	&operator<=(const Fixed &fix)
+{
+	return (this->fpv <= fix->fpv);
+}
+
+bool	&operator==(const Fixed &fix)
+{
+	return (this->fpv == fix->fpv);
+}
+
+bool	&operator!=(const Fixed &fix)
+{
+	return (this->fpv != fix->fpv);
 }
 
 float	Fixed::toFloat(void) const
