@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 11:17:03 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/29 11:32:34 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/29 13:23:47 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ClapTrap::ClapTrap(std::string name)
 	this->MeleeAttackDamage = 0;
 	this->RangedAttackDamage = 0;
 	this->ArmorDamageReduction = 0;
-	std::cout<< name + " : \"I am AWAKE \"\n";
+	std::cout<< name + "(ClapTrap) : \"I am AWAKE \"\n";
 	return ;
 }
 
@@ -61,7 +61,7 @@ void	ClapTrap::meleeAttack(std::string const &target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	amount = amount - this->ArmorDamageReduction;
-	if (amount >= this->HitPoints)
+	if ((int)amount >= this->HitPoints)
 	{
 		this->HitPoints = 0;
 		std::cout << "\"Argh arghargh death gurgle gurglegurgle urgh... death.\"\n";

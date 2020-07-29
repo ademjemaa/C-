@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 11:53:09 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/29 11:28:47 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/29 13:25:10 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	this->MeleeAttackDamage = 30;
 	this->RangedAttackDamage = 20;
 	this->ArmorDamageReduction = 5;
-	std::cout<< name + " says : \"Let's get this party started!\"\n";
+	std::cout<< name + "(FragTrap) says : \"Let's get this party started!\"\n";
 	return ;
 }
 
@@ -95,5 +95,6 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 				fireElement();
 				break;
 		}
+		std::cout << target + " is tired of this s***\n";
 	}
 }

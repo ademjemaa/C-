@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:37:52 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/29 13:14:57 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/29 13:26:18 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ void	ScavTrap::challengeNewcomer(std::string const &target)
 	switch (rando)
 	{
 		case 0 :
-			std::cout << '<' + this->Name + "> : \"I challenge you to a slappig competiton !\"\n";
+			std::cout << '<' + this->Name + "> : \"I challenge you " + target + " to a slappig competiton !\"\n";
 			break ;
 		case 1 :
-			std::cout << '<' + this->Name + "> : \"I challenge you to a beer pong competition !\"\n";
+			std::cout << '<' + this->Name + "> : \"I challenge you " + target + " to a beer pong competition !\"\n";
 			break ;
 		case 2 :
-			std::cout << '<' + this->Name + "> : \"I challenge you to a donut eating competiton !\"\n";
+			std::cout << '<' + this->Name + "> : \"I challenge you " + target + " to a donut eating competiton !\"\n";
 			break ;
 		case 3 :
-			std::cout << '<' + this->Name + "> : \"I challenge you to a rubik's cube solving competition!\"\n";
+			std::cout << '<' + this->Name + "> : \"I challenge you " + target + " to a rubik's cube solving competition!\"\n";
 			break ;
 		case 4 :
-			std::cout << '<' + this->Name + "> : \"I challenge you to a groove dancing competition! \"\n";
+			std::cout << '<' + this->Name + "> : \"I challenge you " + target + " to a groove dancing competition! \"\n";
 			break ;
 	}
 	while (1)

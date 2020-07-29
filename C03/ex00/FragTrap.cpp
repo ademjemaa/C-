@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 11:53:09 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/28 13:46:57 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/29 13:30:38 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	FragTrap::meleeAttack(std::string const &target)
 void	FragTrap::takeDamage(unsigned int amount)
 {
 	amount = amount - this->ArmorDamageReduction;
-	if (amount >= this->HitPoints)
+	if ((int)amount >= this->HitPoints)
 	{
 		this->HitPoints = 0;
 		std::cout << "\"Argh arghargh death gurgle gurglegurgle urgh... death.\"\n";
@@ -157,5 +157,6 @@ void	FragTrap::vaulthunter_dot_exe(std::string const &target)
 				fireElement();
 				break;
 		}
+		std::cout << target + " is tired of this s***\n";
 	}
 }
