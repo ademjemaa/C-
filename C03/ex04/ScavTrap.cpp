@@ -6,13 +6,13 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:37:52 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/29 10:46:34 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/29 13:14:57 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->Name = name;
 	this->HitPoints = 100;
@@ -23,7 +23,7 @@ ScavTrap::ScavTrap(std::string name)
 	this->MeleeAttackDamage = 20;
 	this->RangedAttackDamage = 15;
 	this->ArmorDamageReduction = 3;
-	std::cout<< name + " here. Tell me what to shoot and how much I'm gettin' paid.\"\n";
+	std::cout<< name + "(ScavTrap) says : \"Tell me what to shoot and how much I'm gettin' paid.\"\n";
 	return ;
 }
 
@@ -33,68 +33,6 @@ ScavTrap::~ScavTrap(void)
 		std::cout <<  "\"Yup. I'm " + this->Name + " and I'm a total idiot. Hah!\"\n";
 	else
 		std::cout << "\"CLAPTRAP! MAKE IT STOP!\"\n";
-}
-
-int		ScavTrap::getRangedAttackDamage(void)
-{
-	return (this->RangedAttackDamage);
-}
-
-int		ScavTrap::getMeleeAttackDamage(void)
-{
-	return (this->MeleeAttackDamage);
-}
-
-std::string	ScavTrap::getName(void)
-{
-	return (this->Name);
-}
-
-void	ScavTrap::beRepaired(unsigned int amount)
-{
-	if (this->HitPoints == 0)
-		std::cout << '<' + this->Name + "> :\"Can I just say... yeehaw.\"\n";
-	else
-		std::cout << '<' + this->Name + "> \"Health! Eww, what flavor is red?\"\n";
-	amount = this->HitPoints + amount;
-	if (amount > 100)
-		this->HitPoints = 100;
-	else
-		this->HitPoints = amount;
-}
-
-void	ScavTrap::takeDamage(unsigned int amount)
-{
-	amount = amount - this->ArmorDamageReduction;
-	if (amount >= this->HitPoints)
-	{
-		this->HitPoints = 0;
-		std::cout << "\"Argh arghargh death gurgle gurglegurgle urgh... death.\"\n";
-		std::cout << '<' + this->Name + "> has died\n";
-	}
-	else
-	{
-		this->HitPoints = this->HitPoints - amount;
-		std::cout << '<' + this->Name + "> : \"Ow, what was that for?\"\n";
-		std::cout << "current HP : " + std::to_string(this->HitPoints) + '\n';
-	}
-	return ;
-}
-
-void	ScavTrap::rangedAttack(std::string const &target)
-{
-	std::cout << '<' + this->Name + "> attacks <" + target + "> at range, causing <"\
-		+ std::to_string(this->RangedAttackDamage) + "> points of damage! " + this->Name +\
-		", \"Right. Kill him. Got it.\"\n";
-	return ;
-}
-
-void	ScavTrap::meleeAttack(std::string const &target)
-{
-	std::cout << this->Name + ": \"I'm just warming up.\"\n" + '<' + this->Name +\
-		"> attacks <" + target + "> with a machete, causing <" + std::to_string(this->MeleeAttackDamage) +\
-		"> points of damage !\n";
-	return ;
 }
 
 void	ScavTrap::challengeNewcomer(std::string const &target)

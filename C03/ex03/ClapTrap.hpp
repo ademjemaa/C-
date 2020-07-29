@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/28 14:32:11 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/29 10:42:37 by adjemaa          ###   ########.fr       */
+/*   Created: 2020/07/29 10:59:24 by adjemaa           #+#    #+#             */
+/*   Updated: 2020/07/29 11:39:56 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define	SCAVTRAP_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
-#include "FragTrap.hpp"
+#include <iostream>
 
-class	ScavTrap{
-	private :
+class	ClapTrap{
+	protected :
 		int	HitPoints;
 		int	MaxHitPoints;
 		int	EnergyPoints;
@@ -27,16 +27,14 @@ class	ScavTrap{
 		int	RangedAttackDamage;
 		int	ArmorDamageReduction;
 	public :
-		ScavTrap(std::string name);
-		~ScavTrap(void);
 		void		rangedAttack(std::string const &target);
 		void		meleeAttack(std::string const &target);
-		void		challengeNewcomer(std::string const &target);
 		void		takeDamage(unsigned int amount);
-		void		beRepaired(unsigned int amount);
-		std::string	getName(void);
+		void		beRepaired(unsigned int amount);std::string	getName(void);
 		int			getMeleeAttackDamage(void);
 		int			getRangedAttackDamage(void);
+		ClapTrap(std::string name);
+		~ClapTrap(void);
 };
 
 #endif
