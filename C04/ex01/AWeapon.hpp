@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 10:31:18 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/30 14:20:57 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/31 17:40:54 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ class	AWeapon{
 		int			apcost;
 		std::string	effect;
 	public :
-		AWeapon(std::string const & name, int apcost, int damage);
+		AWeapon(std::string const & name= "", int apcost = 0, int damage = 0);
 		virtual ~AWeapon(void);
 		AWeapon(const AWeapon &wep);
 		AWeapon	&operator=(const AWeapon &wep);
 		std::string	getName(void) const;
 		int			getAPCost(void) const;
 		int			getDamage(void) const;
-		virtual	void	attack(void) const = 0;
+		virtual	void	attack(void) const;
 
 };
 

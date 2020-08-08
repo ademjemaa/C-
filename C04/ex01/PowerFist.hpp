@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 13:30:12 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/30 13:31:58 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/31 17:41:21 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class PowerFist : public AWeapon{
 		~PowerFist(void);
 		PowerFist(const PowerFist &fist);
 		PowerFist &operator=(const PowerFist &fist);
-		void	attack(void) const = 0;
+		virtual void	attack(void) const;
 };
 
 #endif
