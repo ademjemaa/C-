@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 13:18:24 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/30 13:30:08 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/31 17:41:10 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class	PlasmaRifle : public AWeapon{
 		~PlasmaRifle(void);
 		PlasmaRifle(const PlasmaRifle &rifle);
 		PlasmaRifle &operator=(const PlasmaRifle &rifle);
-		void	attack(void) const = 0;
+		virtual void	attack(void) const;
 };
 
 #endif

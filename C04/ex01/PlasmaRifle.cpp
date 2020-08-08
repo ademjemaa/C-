@@ -6,17 +6,17 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 13:24:51 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/30 14:20:55 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/31 17:33:32 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PlasmaRifle.hpp"
 
-PlasmaRifle::PlasmaRifle() : AWeapon("Plasma Rifle", 5, 21)
+PlasmaRifle::PlasmaRifle()
 {
 	this->name = "Plasma Rifle";
-	this->damage = 21;
 	this->apcost = 5;
+	this->damage = 21;
 	this->effect = "* piouuu piouuu piouuu *";
 }
 
@@ -35,7 +35,7 @@ PlasmaRifle		&PlasmaRifle::operator=(const PlasmaRifle &rifle)
 	{
 		this->name = rifle.getName();
 		this->damage = rifle.getDamage();
-		this->apcost = rifle.getAPCost;
+		this->apcost = rifle.getAPCost();
 		this->effect = "* piouuu piouuu piouuu *";
 	}
 	return (*this);

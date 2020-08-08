@@ -6,9 +6,11 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 13:32:11 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/07/30 13:35:23 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/07/31 17:33:54 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "PowerFist.hpp"
 
 PowerFist::PowerFist()
 {
@@ -24,7 +26,7 @@ PowerFist::~PowerFist(void)
 
 PowerFist::PowerFist(const PowerFist &fist)
 {
-	*this = rifle;
+	*this = fist;
 }
 
 PowerFist	&PowerFist::operator=(const PowerFist &fist)
@@ -42,4 +44,5 @@ PowerFist	&PowerFist::operator=(const PowerFist &fist)
 void	PowerFist::attack(void) const
 {
 	std::cout << this->effect + '\n';
+	return ;
 }
