@@ -49,3 +49,8 @@ unsigned int	AMateria::getXP(void) const
 {
 	return (this->xp);
 }
+
+void AMateria::use(ICharacter &target)
+{
+	this->xp += 10;
+}
