@@ -7,6 +7,13 @@ Character::Character(std::string const &name)
         this->inventory[i] = NULL;
 }
 
+Character::~Character(void)
+{
+    for (int i = 0; i < 4; i++)
+        if (this->inventory[i] != NULL)
+            delete this->inventory[i];
+}
+
 Character::Character(Character const &car)
 {
     this->name = car.name;
@@ -18,13 +25,6 @@ Character::Character(Character const &car)
             this->inventory[i] = NULL;
     }
     return ;
-}
-
-Character::~Character(void)
-{
-    for (int i = 0; i < 4; i++)
-        if (this->inventory[i] != NULL)
-            delete this->inventory[i];
 }
 
 Character &Character::operator=(Character const &car)

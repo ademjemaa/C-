@@ -10,8 +10,8 @@ class Character : public ICharacter{
         AMateria *inventory[4];
     public :
         Character(std::string const &name);
+        virtual ~Character();
 	    Character(Character const &car);
-	    virtual ~Character();
         Character &operator=(Character const &car);
         std::string const &getName(void) const;
         void equip(AMateria *m);
