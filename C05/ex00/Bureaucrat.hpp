@@ -6,10 +6,10 @@
 
 class Bureaucrat{
     private :
-        std::string name;
+        const std::string name;
         int grade;
     public :
-        Bureaucrat(std::string name, int grade);
+        Bureaucrat(const std::string name, int grade);
     	virtual ~Bureaucrat();
 	    Bureaucrat(Bureaucrat const &bure);
 	    Bureaucrat &operator=(Bureaucrat const &bure);

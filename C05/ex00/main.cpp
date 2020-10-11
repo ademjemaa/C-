@@ -9,7 +9,7 @@ int main(void)
 	std::cout << mokriz;
 	mokriz.decrementBureaucrat();
 	std::cout << mokriz;
-    std::cout << mokriz.getName();
+    std::cout << mokriz.getName() + '\n';
 	try
 	{
 		Bureaucrat zabour("Zabour", 0);

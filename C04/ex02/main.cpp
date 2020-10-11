@@ -15,7 +15,6 @@
 #include "ISpaceMarine.hpp"
 #include "TacticalMarine.hpp"
 #include "AssaultTerminator.hpp"
-#include <string>
 
 int main()
 {
