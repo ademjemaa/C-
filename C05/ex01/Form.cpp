@@ -12,16 +12,13 @@
 
 #include "Form.hpp"
 
-Form::Form(const std::string name, int signGrade, int executeGrade)
+Form::Form(const std::string name, int signGrade, int executeGrade) : name(name), signGrade(signGrade), executeGrade(executeGrade)
 {
 	if (signGrade < 1 || executeGrade < 1)
 		throw	Form::GradeTooHighException();
 	if (signGrade > 150 || executeGrade > 150)
 		throw	Form::GradeTooLowException();
-	this->name = name;
-	this->signGrade = signGrade;
-	this->executeGrade = executeGrade;
-   	this->signed = false;	
+   	this->sign = false;	
 }
 
 Form::~Form(void)
@@ -29,7 +26,7 @@ Form::~Form(void)
 	return ;
 }
 
-Form::Form(const Form &form)
+Form::Form(Form const &form) : name(form.name), signGrade(form.signGrade), executeGrade(form.executeGrade)
 {
 	*this = form;
 }
@@ -38,9 +35,7 @@ Form	&Form::operator=(Form const &form)
 {
 	if (this != &form)
 	{
-		this->name = form.name;
-		this->signGrade = form.signGrade;
-		this->executeGrade = form.executeGrade;
+		this->sign = form.sign;
 	}
 	return (*this);
 }
@@ -50,9 +45,9 @@ std::string	Form::getName(void) const
 	return (this->name);
 }
 
-bool	Form::getSigned(void) const
+bool	Form::getSign(void) const
 {
-	return (this->signed);
+	return (this->sign);
 }
 
 int		Form::getSignGrade(void) const
@@ -67,17 +62,28 @@ int		Form::getExecuteGrade(void) const
 
 const	char* Form::GradeTooHighException::what() const throw()
 {
-	return ("Exception : the grade is too High\n");
+	return ("Exception : the Form grade is too High\n");
 }
 
 const	char* Form::GradeTooLowException::what() const throw()
 {
-	return ("Exception : the grade is too low\n");
+	return ("Exception : the Form grade is too low\n");
 }
 
 void	Form::beSigned(Bureaucrat &bure)
 {
-	if (this.signed == false)
-		bure.signForm(this);
+	if (this->sign == false && bure.getGrade() <= this->signGrade)
+		this->sign = true;
 	return ;
+}
+
+std::ostream	&operator<<(std::ostream & out, const Form & form)
+{
+	out << 	"the form \"" << form.getName() << "\" is";
+	if (form.getSign() == true)
+		out << " signed, ";
+	else
+		out << " isn't signed, however, ";
+	out << "its signing grade is : " << form.getSignGrade() << " and its executing grade is : " << form.getExecuteGrade() << "\n";
+	return (out);
 }

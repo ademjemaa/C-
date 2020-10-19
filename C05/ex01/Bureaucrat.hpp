@@ -14,7 +14,10 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
+#include "Form.hpp"
 #include <exception>
+
+class Form;
 
 class Bureaucrat{
     private :
@@ -37,6 +40,7 @@ class Bureaucrat{
         {
             virtual const char* what() const throw();
         };
+        void signForm(Form &form);
 };
 std::ostream    &operator<<(std::ostream &output, Bureaucrat const &bure);
 #endif 

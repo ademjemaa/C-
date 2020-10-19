@@ -12,19 +12,29 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
 	Bureaucrat mokriz("mokriz", 50);
+	Form nuclear("nuclear", 150, 1);
+	Form visa("visa", 150, 100);
+	Form farm("farm", 150, 150);
 	std::cout << mokriz;
 	mokriz.incrementBureaucrat();
 	std::cout << mokriz;
 	mokriz.decrementBureaucrat();
 	std::cout << mokriz;
     std::cout << mokriz.getName() + '\n';
+	std::cout << visa;
+	visa.beSigned(mokriz);
+	mokriz.signForm(visa);
+	mokriz.signForm(farm);
+	mokriz.signForm(nuclear);
 	try
 	{
-		Bureaucrat zabour("Zabour", 0);
+		Bureaucrat zabour("Zabour", 50);
+		Form chaos("chaos", 160, 50);
 		std::cout << zabour;
 	}
 	catch(std::exception const &e)
@@ -33,7 +43,8 @@ int main(void)
 	}
 	try
 	{
-		Bureaucrat mostahil("mostahil", 1000);
+		Bureaucrat mostahil("mostahil", 100);
+		Form peace("peace", 0, 100);
 		std::cout << mostahil;
 	}
 	catch(std::exception const &e)

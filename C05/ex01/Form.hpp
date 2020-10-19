@@ -15,11 +15,14 @@
 
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+class Form;
+
 class Form
 {
     private :
         const std::string name;
-        bool signed;
+        bool sign;
         const int   signGrade;
         const int   executeGrade;
     public :
@@ -27,8 +30,8 @@ class Form
         virtual ~Form(void);
         Form(const Form &form);
         Form &operator=(const Form &form);
-        const   std::string getName(void) const;
-        bool    getSigned(void) const;
+        std::string getName(void) const;
+        bool    getSign(void) const;
         int     getSignGrade(void) const;
         int     getExecuteGrade(void) const;
         class GradeTooHighException: public std::exception
@@ -43,6 +46,6 @@ class Form
 
 };
 
-std::ostream& operator<<(std::ostream& outStream, const Form& form);
+std::ostream& operator<<(std::ostream& out, const Form& form);
 
 #endif
