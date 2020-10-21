@@ -42,8 +42,12 @@ class Form
         {
             virtual const char* what() const throw();
         };
+        class FormNotSignedException: public std::exception
+        {
+            virtual const char* what() const throw();
+        };
         void    beSigned(Bureaucrat &bure);
-
+        virtual void    execute(Bureaucrat const &executor);
 };
 
 std::ostream& operator<<(std::ostream& out, const Form& form);

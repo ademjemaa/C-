@@ -70,6 +70,11 @@ const	char* Form::GradeTooLowException::what() const throw()
 	return ("Exception : the Form grade is too low\n");
 }
 
+const	char* Form::FormNotSignedException::what() const throw()
+{
+	return ("Exception : Form is not signed and thus non executable\n");
+}
+
 void	Form::beSigned(Bureaucrat &bure)
 {
 	if (this->sign == false && bure.getGrade() <= this->signGrade)
@@ -77,13 +82,21 @@ void	Form::beSigned(Bureaucrat &bure)
 	return ;
 }
 
+void    Form::execute(Bureaucrat const &executor)
+{
+	if (executor.getGrade() > this->executeGrade)
+		throw Form::GradeTooLowException();
+	if (!this->sign)
+		throw Form::FormNotSignedException();
+}
+
 std::ostream	&operator<<(std::ostream & out, const Form & form)
 {
-	out << 	"the form \"" << form.getName() << "\" is";
+	out << 	"the form \"" << form.getName() << "\"";
 	if (form.getSign() == true)
-		out << " signed, ";
+		out << " is signed, ";
 	else
 		out << " isn't signed, however, ";
-	out << "its signing grade is : " << form.getSignGrade() << " and its executing grade is : " << form.getExecuteGrade() << "\n";
+	out << "its signing grade is : " << form.getSignGrade() << " and its execution grade is : " << form.getExecuteGrade() << "\n";
 	return (out);
 }
