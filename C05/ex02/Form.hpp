@@ -46,8 +46,8 @@ class Form
         {
             virtual const char* what() const throw();
         };
-        void    beSigned(Bureaucrat &bure);
-        virtual void    execute(Bureaucrat const &executor);
+        void    beSigned(Bureaucrat const &bure);
+        virtual void    execute(Bureaucrat const &executor) const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Form& form);

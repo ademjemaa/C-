@@ -75,14 +75,14 @@ const	char* Form::FormNotSignedException::what() const throw()
 	return ("Exception : Form is not signed and thus non executable\n");
 }
 
-void	Form::beSigned(Bureaucrat &bure)
+void	Form::beSigned(Bureaucrat const &bure)
 {
 	if (this->sign == false && bure.getGrade() <= this->signGrade)
 		this->sign = true;
 	return ;
 }
 
-void    Form::execute(Bureaucrat const &executor)
+void    Form::execute(Bureaucrat const &executor) const
 {
 	if (executor.getGrade() > this->executeGrade)
 		throw Form::GradeTooLowException();

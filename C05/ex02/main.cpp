@@ -32,6 +32,7 @@ int main(void)
 	std::cout << toto;
 	gunner.execute(mokriz);
 	toto.execute(mokriz);
+	mokriz.executeForm(gunner);
 	mokriz.incrementBureaucrat();
 	std::cout << mokriz;
 	mokriz.decrementBureaucrat();
