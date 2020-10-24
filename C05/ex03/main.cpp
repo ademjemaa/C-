@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 20:21:45 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/10/12 20:21:47 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/10/21 15:36:12 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,27 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <stdio.h>
 
 int main(void)
 {
-	Bureaucrat mokriz("mokriz", 20);
+	Bureaucrat mokriz("mokriz", 3);
 	Form nuclear("nuclear", 150, 1);
 	Form visa("visa", 150, 100);
 	Form farm("farm", 150, 150);
+	Intern someRandomIntern;
+	Form* rrf;
+	std::string	strings[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+	srand (time(NULL));
+	int rando = rand() % 3;
+	rrf = someRandomIntern.makeForm(strings[rando], "Bender");
 	ShrubberyCreationForm toto("file");
 	RobotomyRequestForm gunner("superman");
 	gunner.beSigned(mokriz);
 	std::cout << toto;
+	mokriz.signForm(*rrf);
+	mokriz.executeForm(*rrf);
 	toto.beSigned(mokriz);
 	std::cout << toto;
 	gunner.execute(mokriz);
