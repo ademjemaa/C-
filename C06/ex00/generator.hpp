@@ -2,6 +2,10 @@
 # define GENERATOR_HPP
 
 #include <iostream>
+#include <ctype.h>
+#include <sstream> 
+#include <limits.h>
+
 
 struct converted{
     char    aschar;
@@ -30,6 +34,6 @@ class Generator
         std::string getOriginal(void) const;
 };
 
-std::ostream    &operator<<(std::ostream &output, Generator const &gen);
+std::ostream    &operator<<(std::ostream &out, Generator const &gen);
 
 #endif
