@@ -6,7 +6,7 @@
 /*   By: adjemaa <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 15:41:40 by adjemaa           #+#    #+#             */
-/*   Updated: 2020/10/25 17:24:43 by adjemaa          ###   ########.fr       */
+/*   Updated: 2020/10/26 14:50:08 by adjemaa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int main(int argc, char *argv[])
 {
 
-	std::string	str = "544gg";
-	std::cout << str;
-	Generator	gen(str);
-	std::cout << gen.getInt();
+	Generator	gen(argv[1]);
+	float toto = 4.22f;
+	std::cout << toto;
+	std::cout << gen;
 }

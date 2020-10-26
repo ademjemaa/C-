@@ -6,7 +6,6 @@
 #include <sstream> 
 #include <limits.h>
 
-
 struct converted{
     char    aschar;
     int     asint;
@@ -27,6 +26,7 @@ class Generator
         ~Generator(void);
         Generator(Generator const &gen);
         Generator &operator=(Generator const &gen);
+		int		getTypes(int i) const;
         int     getInt(void) const;
         char    getChar(void) const;
         float   getFloat(void) const;
