@@ -28,44 +28,49 @@ Generator	&Generator::operator=(Generator const &gen)
 
 void	Generator::convert(void)
 {
-	if (this->original.length() == 1)
+	float buffer = 0;
+	try
 	{
-		if (isprint(this->original[0]))
+		buffer = std::stof(this->original);
+		if (buffer <= 127 && buffer >= 0)	
 		{
-			this->types[0] = 1;
-			this->convs.aschar = this->original[0];
+			if (buffer > 31 && buffer < 127)
+			{
+				this->types[0] = 1;
+				this->convs.aschar = static_cast<char>(buffer);
+			}
+			else
+				this->types[0] = 2;
 		}
 		else
-			this->types[0] = 2;
-	}
-	else
-		this->types[0] = 3;
-	std::stringstream ss(this->original);
-	if ((ss >> this->convs.asint).fail() || !(ss >> std::ws).eof())
-	{
+			this->types[0] = 3;
+		if (buffer + 100 > INT_MAX|| buffer - 100 < INT_MIN)
 			this->types[1] = 2;
-			this->convs.asint = 0;
-	}
-	else
-		this->types[1] = 1;
-	ss.clear();
-	ss.seekg(0);
-	if ((ss >> this->convs.asfloat).fail() || !(ss >> std::ws).eof())
-	{
-		this->types[2] = 2;
-		this->convs.asfloat = 0;
-	}
-	else
+		else
+		{
+			long long precision = std::stoll(this->original);
+			if (precision > INT_MAX || precision < INT_MIN)
+				this->types[1] = 2;
+			else
+			{
+				this->convs.asint = precision;
+				this->types[1] = 1;
+			}
+		}
+		if (buffer > __DBL_MAX__ || buffer < __DBL_MIN__)
+			this->types[3] = 2;
+		else
+		{
+			this->convs.asdouble = static_cast<double>(buffer);
+			this->types[3] = 1;
+		}
+		this->convs.asfloat = buffer;
 		this->types[2] = 1;
-	ss.clear();
-	ss.seekg(0);
-	if ((ss >> this->convs.asdouble).fail() || !(ss >> std::ws).eof())
-	{
-		this->types[3] = 2;
-		this->convs.asdouble = 0;
 	}
-	else
-		this->types[3] = 1;
+	catch(const std::exception& e)
+	{
+		throw Generator::BadInput();
+	}
 }
 
 int		Generator::getInt(void) const
@@ -75,11 +80,12 @@ int		Generator::getInt(void) const
 
 char	Generator::getChar(void) const
 {
-	if (this->types[0] == 2)
-		std::cout << "non printable";
-	if (this->types[0] == 3)
-		std::cout << "impossible";
 	return (this->convs.aschar);
+}
+
+const char* Generator::BadInput::what() const throw()
+{ 
+	return ("Invalid format or can't be converted."); 
 }
 
 float	Generator::getFloat(void) const
@@ -105,21 +111,37 @@ std::string	Generator::getOriginal(void) const
 std::ostream	&operator<<(std::ostream &out, Generator const &gen)
 {
 	if (gen.getTypes(0) == 1)
-		out << "char : " + std::to_string(gen.getChar());
+	{
+		out << "char : \'";
+		out << gen.getChar();
+		out << '\'';
+	}
 	if (gen.getTypes(0) == 3)
 		out << "char : impossible";
 	if (gen.getTypes(0) == 2)
-	out << "char : non prntable";
+	out << "char : non printable";
 	if (gen.getTypes(1) == 1)
 		out << "\nint : " + std::to_string(gen.getInt());
 	if (gen.getTypes(1) == 2)
 		out << "\nint : impossible";
 	if (gen.getTypes(2) == 1)
-		out << "\nfloat : " + std::to_string(gen.getFloat());
+	{
+		out << "\nfloat : ";
+		out << gen.getFloat();
+		if (floorf(gen.getFloat()) == gen.getFloat())
+			out << ".0";
+		out << "f";
+	}
 	if (gen.getTypes(2) == 2)
 		out << "\nfloat : impossible";
 	if (gen.getTypes(3) == 1)
-		out << "\nDouble : " + std::to_string(gen.getDouble()) + '\n';
+	{
+		out << "\nDouble : ";
+		out << gen.getDouble();
+		if (floorf(gen.getFloat()) == gen.getFloat())
+			out << ".0";
+		out << '\n';
+	}
 	if (gen.getTypes(3) == 2)
 		out << "\nDouble : impossible\n";
 

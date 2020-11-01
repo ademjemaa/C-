@@ -4,6 +4,9 @@
 #include <iostream>
 #include <ctype.h>
 #include <sstream> 
+#include <string>
+#include <math.h>
+#include <stdint.h>
 #include <limits.h>
 
 struct converted{
@@ -31,6 +34,10 @@ class Generator
         char    getChar(void) const;
         float   getFloat(void) const;
         double  getDouble(void) const;
+        class BadInput : public std::exception
+        {
+            virtual const char* what() const throw();
+        };
         std::string getOriginal(void) const;
 };
 

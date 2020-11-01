@@ -14,9 +14,14 @@
 
 int main(int argc, char *argv[])
 {
-
-	Generator	gen(argv[1]);
-	float toto = 4.22f;
-	std::cout << toto;
-	std::cout << gen;
+	(void)argc;
+	try
+	{
+		Generator	gen(argv[1]);
+		std::cout << gen;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
