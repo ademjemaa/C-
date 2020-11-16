@@ -2,10 +2,10 @@
 
 int main(void)
 {
-    std::deque<int>  list1= {8, 16, 2, 55};
+    std::deque<int>  list= {8, 16, 2, 55};
     try
     {
-        if (::easyfind(list1, 16))
+        if (::easyfind(list, 16))
             std::cout << "element found" << std::endl;
         else
         {
